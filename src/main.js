@@ -1,5 +1,5 @@
 /**
- * Ammora Launchpad — a READ-ONLY explorer for the Ammora protocol on
+ * AmoLaunch — a READ-ONLY explorer for the Ammora protocol on
  * GIWA Sepolia (chain 91342), built with @ammora-protocol/sdk@0.3.9.
  *
  * Everything on this page is a live on-chain read or an SDK-computed quote:

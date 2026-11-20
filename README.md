@@ -1,10 +1,10 @@
-# Ammora Launchpad — GIWA Sepolia
+# AmoLaunch — GIWA Sepolia
 
 A **read-only launchpad explorer** for the [Ammora](https://ammora.org) protocol on
 **GIWA Sepolia (chain ID 91342)**, built with the official
 [`@ammora-protocol/sdk`](https://www.npmjs.com/package/@ammora-protocol/sdk) `0.3.9`.
 
-**Live site:** https://cunong05.github.io/ammora-launchpad/
+**Live site:** https://cunong05.github.io/amolaunch/
 
 Built for the **Ammora Season 2 Builder mission** — “Ship an exchange or launchpad
 with the Ammora SDK.”
