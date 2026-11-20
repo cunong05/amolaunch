@@ -61,5 +61,5 @@ npm run preview  # preview the production build
 
 - `@ammora-protocol/sdk@0.3.9` — deployment catalog, Config/curve reads, quotes
 - `viem` — public client, transports, log scanning
-- `vite` — bundling; deployed to GitHub Pages by the workflow in
-  `.github/workflows/pages.yml`
+- `vite` — bundling; the production build is published to GitHub Pages
+  (served from the `gh-pages` branch) with `npm run build && npm run deploy`
