@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ammora Launchpad — GIWA Sepolia</title>
+    <meta
+      name="description"
+      content="A read-only launchpad explorer for the Ammora protocol on GIWA Sepolia, built with @ammora-protocol/sdk. Browse launch Configs, discover live token launches and quote bonding curves — no wallet, no signing."
+    />
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <header class="top">
+      <div class="wrap">
+        <div class="brand">
+          <div class="logo" aria-hidden="true">◆</div>
+          <div>
+            <h1>Ammora Launchpad</h1>
+            <p class="tagline">Token launches on <strong>GIWA Sepolia</strong>, read live from chain with the Ammora SDK.</p>
+          </div>
+        </div>
+        <div class="head-meta">
+          <span class="pill pill-chain">Chain 91342 · GIWA Sepolia · testnet</span>
+          <span class="pill" id="blockPill">connecting…</span>
+          <span class="pill pill-ok" id="corePill" hidden>V4 core verified</span>
+        </div>
+      </div>
+      <div class="wrap contracts" id="contractBar"></div>
+    </header>
+
+    <main class="wrap">
+      <section>
+        <div class="sec-head">
+          <h2>Launch Configs</h2>
+          <button class="ghost" id="refreshBtn" type="button">↻ Refresh live data</button>
+        </div>
+        <p class="sec-sub">
+          Reusable launch policies registered in the Ammora V4 ConfigRegistry — read on-chain via
+          <code>getAmmoraV4ConfigAtBlock</code>. Newest first.
+        </p>
+        <div class="grid" id="configGrid">
+          <p class="muted" id="configStatus">Loading configs from chain…</p>
+        </div>
+        <p class="footnote">
+          Note: Config #6 (hash <code>0x604890…667</code>) is flagged as quarantined in the official Ammora docs and is
+          disabled on-chain. It is never featured or used as a default here.
+        </p>
+      </section>
+
+      <section>
+        <h2>Latest Launches</h2>
+        <p class="sec-sub">
+          Tokens issued through the Ammora LaunchFactory, discovered from <code>LaunchCreated</code> events and enriched
+          with live bonding-curve state from <code>AmmoraV4LaunchCurveClient</code>.
+        </p>
+        <div class="grid" id="launchGrid">
+          <p class="muted" id="launchStatus">Scanning the factory for launches…</p>
+        </div>
+      </section>
+
+      <section>
+        <h2>Curve Quote <span class="ro">read-only</span></h2>
+        <p class="sec-sub">
+          Pick a launch above, choose a direction and an amount — the quote is computed by the SDK straight from the
+          curve contract (<code>quoteExactInputAtBlock</code>). Nothing is signed and no transaction is sent.
+        </p>
+        <div class="panel" id="quotePanel">
+          <div class="q-selected" id="qSelected"><span class="muted">No launch selected yet.</span></div>
+          <div class="q-controls">
+            <div class="seg" role="group" aria-label="Direction">
+              <button type="button" id="dirBuy" class="seg-btn active">Buy</button>
+              <button type="button" id="dirSell" class="seg-btn">Sell</button>
+            </div>
+            <label class="amount">
+              <span id="amountLabel">Amount in (WETH)</span>
+              <input id="amountInput" type="text" inputmode="decimal" value="0.01" autocomplete="off" spellcheck="false" />
+            </label>
+            <button type="button" class="primary" id="quoteBtn">Get live quote</button>
+          </div>
+          <div class="q-result" id="quoteResult">
+            <span class="muted">Quotes appear here, priced at the finalized chain head.</span>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="wrap foot">
+      <p>
+        Built with <code>@ammora-protocol/sdk@0.3.9</code> + <code>viem</code> for the
+        <a href="https://ammora.org" target="_blank" rel="noreferrer">Ammora</a> Season 2 Builder mission.
+        Read-only: this site never asks for a wallet, a signature or a private key.
+      </p>
+      <p class="muted">
+        <a href="https://docs.ammora.org" target="_blank" rel="noreferrer">Ammora Docs</a> ·
+        <a href="https://sepolia-explorer.giwa.io" target="_blank" rel="noreferrer">GIWA Sepolia Explorer</a> ·
+        <a href="https://github.com/cunong05/ammora-launchpad" target="_blank" rel="noreferrer">Source on GitHub</a>
+      </p>
+    </footer>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
